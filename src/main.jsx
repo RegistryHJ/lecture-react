@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 
 import './main.css';
 import IndexPage from './pages';
@@ -9,12 +9,12 @@ import ContentsPage from './pages/contents';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<IndexPage />} />
-        <Route path='/about' element={<AboutPage />} />
-        <Route path='/contents' element={<ContentsPage />} />
-      </Routes>
-    </BrowserRouter>
+    <RouterProvider
+      router={createBrowserRouter([
+        { path: '/', element: <IndexPage /> },
+        { path: '/about', element: <AboutPage /> },
+        { path: '/contents', element: <ContentsPage /> },
+      ])}
+    />
   </StrictMode>,
 );
